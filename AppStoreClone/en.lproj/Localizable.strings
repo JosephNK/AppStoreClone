@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  AppStoreClone
+
+  Created by JosephNK on 2018. 10. 23..
+  Copyright © 2018년 JosephNK. All rights reserved.
+*/
+
+"SearchNavTitle" = "Search";
+
+"SearchBarPlaceholder" = "App Store";
+
+"SearchRecentTitle" = "Recent Searches";
+
+"WhatsNew" = "What's New";
+
+"Preview" = "Preview";
+
+"Infomation" = "Infomation";
+
+"Version" = "Version";
+
+"UserRatingCountDesc" = " ratings";
+
+"Age" = "Age";
+
+"Seller" = "Seller";
+
+"Size" = "Size";
+
+"Category" = "Category";
+
+"Compatibility" = "Compatibility";
+
+"Language" = "Language";
+
+"Copyright" = "Copyright";
+
+"ShowVersion" = "Show Version";
+
+"Download" = "Download";
+
+"ReadMore" = "Read more";
+
+"Developer" = "Developer";
+
+"RequiresiOS %@" = "Requires iOS %@ version or higher.";
+
+"Compatible %@" = "Compatible with %@.";
+
+"Compatible %@ %@" = "Compatible with %@, %@.";
+
+"Compatible %@ %@ %@" = "Compatible with %@, %@ and %@.";
+
+"For %@" = "For this %@";
+
+"Lang %@ %@" = "%@ and %@";
+
+"Lang %@" = "%@";
+
+"NotFound" = "Search NotFound";
+
+"YearAgo" = " years ago";
+"MonthAgo" = " months ago";
+"WeekAgo" = " weeks ago";
+"DayAgo" = " days ago";
+"HourAgo" = " hours ago";
+"MinutesAgo" = " minutes ago";
+"SecondAgo" = " seconds ago";
+"JustNow" = "Just now";

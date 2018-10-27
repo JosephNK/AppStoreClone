@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  AppStoreClone
+
+  Created by JosephNK on 2018. 10. 23..
+  Copyright © 2018년 JosephNK. All rights reserved.
+*/
+
+"SearchNavTitle" = "검색";
+
+"SearchBarPlaceholder" = "App Store";
+
+"SearchRecentTitle" = "최근 검색어";
+
+"WhatsNew" = "새로운 기능";
+
+"Preview" = "미리보기";
+
+"Infomation" = "정보";
+
+"Version" = "버전";
+
+"UserRatingCountDesc" = "개의 평가";
+
+"Age" = "연령";
+
+"Seller" = "판매자";
+
+"Size" = "크기";
+
+"Category" = "카테고리";
+
+"Compatibility" = "호환성";
+
+"Language" = "언어";
+
+"Copyright" = "저작권";
+
+"ShowVersion" = "버전 기록";
+
+"Download" = "받기";
+
+"ReadMore" = "더보기";
+
+"Developer" = "개발자";
+
+"RequiresiOS %@" = "iOS %@ 버전 이상이 필요.";
+
+"Compatible %@" = "%@ 호환";
+
+"Compatible %@ %@" = "%@, %@ 호환";
+
+"Compatible %@ %@ %@" = "%@, %@ 및 %@와(과) 호환";
+
+"For %@" = "이 %@ 용";
+
+"Lang %@ %@" = "%@ 외 %@개";
+
+"Lang %@" = "%@";
+
+"NotFound" = "결과 없음";
+
+"YearAgo" = "년 전";
+"MonthAgo" = "달 전";
+"DayAgo" = "일 전";
+"WeekAgo" = "주 전";
+"HourAgo" = "시간 전";
+"MinutesAgo" = "분 전";
+"SecondAgo" = "초 전";
+"JustNow" = "방금";
