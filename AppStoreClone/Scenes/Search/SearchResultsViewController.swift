@@ -154,7 +154,7 @@ extension SearchResultsViewController {
      결과없음 타입으로 리로드
      */
     fileprivate func reloadAtNotFound() {
-        // Show AppList UI
+        // Reload Notfound UI
         dataSource?.currentResultType = .notfound
         self.tableView.reloadData()
         self.tableView.isScrollEnabled = false
