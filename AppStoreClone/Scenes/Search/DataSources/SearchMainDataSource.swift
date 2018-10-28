@@ -10,6 +10,7 @@ import UIKit
 
 class SearchMainDataSource: NSObject, UITableViewDataSource {
     
+    /// 최근 검색어들 배열 모델 리스트
     var historys: [HistoryEntity] = []
     
     //

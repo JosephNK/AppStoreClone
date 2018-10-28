@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+ Search API 결과 모델 정의 클래스
+ https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/
+ */
 struct SearchModel: Codable {
     //let resultCount: Int?
     let results: [SearchResultModel]?
@@ -271,8 +275,8 @@ struct SearchInfoListModel {
             results.append(SearchInfoListModel.init(title: categoryTitle, subtitle: ""))
         }
         if supportedDevices.count > 0 {
-            let subtitle = String.convertCompatibleDisplay(compatibleVersion: minimumOsVersion)
-            let desc = String.convertDeviceInfo(compatibleDevices: supportedDevices, compatibleVersion: minimumOsVersion)
+            let subtitle = String.convertCompatibleDisplay(compatibleMinVersion: minimumOsVersion)
+            let desc = String.convertDeviceInfo(compatibleDevices: supportedDevices, compatibleMinVersion: minimumOsVersion)
             results.append(SearchInfoListModel.init(title: compatibilityTitle, subtitle: subtitle, desc: desc, useExpand: true))
         } else {
             results.append(SearchInfoListModel.init(title: compatibilityTitle, subtitle: "", desc: ""))

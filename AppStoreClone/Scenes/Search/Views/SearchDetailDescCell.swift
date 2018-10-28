@@ -38,6 +38,11 @@ class SearchDetailDescCell: BaseTableViewCell {
         super.initialization()
     }
     
+    /**
+     읽었는지 안읽었는지 처리하는 함수
+     - parameters:
+     - isReadMoreValue: 읽었는지 안읽었는지 Bool 값
+     */
     public func updateReadMore(_ isReadMoreValue: Bool) {
         let text = self.model?.description ?? ""
         

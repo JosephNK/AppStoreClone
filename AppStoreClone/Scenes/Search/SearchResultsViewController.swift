@@ -50,10 +50,18 @@ class SearchResultsViewController: BaseTableViewController {
 // MARK: - Public Method
 extension SearchResultsViewController {
     
+    /**
+     결과 테이블뷰 숨기기
+     - parameters:
+     - hidden: 숨기기 여부
+     */
     public func updateTableViewHidden(_ hidden: Bool) {
         self.tableView.isHidden = hidden
     }
     
+    /**
+     결과 테이블뷰 데이타 삭제
+     */
     public func removeRows() {
         self.dataSource?.historys.removeAll()
         self.tableView.reloadData()
@@ -63,6 +71,11 @@ extension SearchResultsViewController {
     //    tableViewSeletedHandler = handler
     //}
     
+    /**
+     서치API로 부터 APP 리스트 정보 가져오기
+     - parameters:
+     - searchText: 검색어
+     */
     public func fetchSearchAppList(searchText: String) {
         self.removeRows()
         
@@ -89,6 +102,11 @@ extension SearchResultsViewController {
 // MARK: - Private Method
 extension SearchResultsViewController {
     
+    /**
+     타이핑 된 검색어로 부터 최근 검색어에 매칭되는 리스트 가져오기
+     - parameters:
+     - searchText: 검색어
+     */
     fileprivate func filterRowsFetchForSearchedText(_ searchText: String) {
         // Search History Fetch
         HistoryCoreData.shared.fetch(search: searchText) { [weak self] (results) in
@@ -100,6 +118,11 @@ extension SearchResultsViewController {
         }
     }
     
+    /**
+     검색어 코어데이터에 저장하기
+     - parameters:
+     - text: 검색어
+     */
     fileprivate func updateHistoryFromSearchText(_ text: String) {
         if !text.isEmpty {
             // Search Word Save & Update
@@ -107,6 +130,9 @@ extension SearchResultsViewController {
         }
     }
     
+    /**
+     최근 검색어 타입으로 리로드
+     */
     fileprivate func reloadAtHistory() {
         // Reload History UI
         dataSource?.currentResultType = .history
@@ -114,6 +140,9 @@ extension SearchResultsViewController {
         self.tableView.isScrollEnabled = true
     }
     
+    /**
+     앱리스트 타입으로 리로드
+     */
     fileprivate func reloadAtAppList() {
         // Reload AppList UI
         dataSource?.currentResultType = .applist
@@ -121,6 +150,9 @@ extension SearchResultsViewController {
         self.tableView.isScrollEnabled = true
     }
     
+    /**
+     결과없음 타입으로 리로드
+     */
     fileprivate func reloadAtNotFound() {
         // Show AppList UI
         dataSource?.currentResultType = .notfound

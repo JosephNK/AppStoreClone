@@ -10,6 +10,12 @@ import UIKit
 
 extension String {
     
+    /**
+     한글만 체크하는 함수
+     - parameters:
+     - text: 문자
+     - returns: 한글인지 아닌지 체크
+     */
     static func checkRegularOnlyKorean(_ text: String) -> Bool {
         // Check Only Korean Regular
         let pattern = "^[ㄱ-ㅎㅏ-ㅣ가-힣]"

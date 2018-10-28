@@ -61,6 +61,11 @@ extension SearchDetailViewController {
 // MARK: - Private Method
 extension SearchDetailViewController {
     
+    /**
+     서치API로 부터 App 정보 가져오기
+     - parameters:
+     - bundleId: 번들아이디 (키)
+     */
     fileprivate func fetchSearchLookup(bundleId: String) {
         if bundleId.isEmpty {
             return
@@ -85,6 +90,9 @@ extension SearchDetailViewController {
         }
     }
     
+    /**
+     네비게이션바 아이콘과 다운로드 버튼 표시
+     */
     fileprivate func updateNavigationBarView() {
         if self.navigationItem.titleView == nil {
             if let artworkUrl60 = self.dataSource?.lookupItem?.artworkUrl60 {

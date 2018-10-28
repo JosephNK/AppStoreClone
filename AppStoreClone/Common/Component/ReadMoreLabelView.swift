@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable class ReadMoreLabelView: UIView {
     
+    /// 텍스트
     @IBInspectable var text: String = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda." {
         didSet {
             titleLabel.text = text
@@ -18,6 +19,7 @@ import UIKit
         }
     }
     
+    /// 텍스트 색상
     @IBInspectable var textColor: UIColor = UIColor.black {
         didSet {
             titleLabel.textColor = textColor
@@ -26,6 +28,7 @@ import UIKit
         }
     }
     
+    /// 텍스트 폰트
     @IBInspectable var textFont: UIFont = UIFont.systemFont(ofSize: 14.0) {
         didSet {
             titleLabel.font = textFont
@@ -34,6 +37,7 @@ import UIKit
         }
     }
     
+    /// 텍스트 라벨 NumberLineCount
     @IBInspectable var textNumberLineCount: Int = 3 {
         didSet {
             titleLabel.numberOfLines = textNumberLineCount
@@ -42,26 +46,31 @@ import UIKit
         }
     }
     
+    /// 더보기 버튼 타이틀
     @IBInspectable var readMoreTitle: String = "Read More" {
         didSet {
             readMoreButton.setTitle(readMoreTitle, for: UIControl.State.normal)
         }
     }
     
+    /// 더보기 버튼 타이틀 색상
     @IBInspectable var readMoreTitleColor: UIColor = UIColor.blue {
         didSet {
             readMoreButton.setTitleColor(readMoreTitleColor, for: UIControl.State.normal)
         }
     }
     
+    /// 더보기 버튼 타이틀 폰트
     @IBInspectable var readMoreTitleFont: UIFont = UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.semibold) {
         didSet {
             readMoreButton.titleLabel?.font = readMoreTitleFont
         }
     }
     
+    /// 더보기 버튼 클릭 Handler 정의
     typealias ReadMoreButtonHandler = (_ view: ReadMoreLabelView) -> Void
     
+    /// 더보기 버튼 클릭 Handler
     private var readMoreButtonHandler: ReadMoreButtonHandler?
     
     private lazy var titleLabel: AutoSizingLabel = {
@@ -135,14 +144,28 @@ import UIKit
         }
     }
     
+    /**
+     더보기 버튼 숨김 처리 함수
+     - parameters:
+     - hidden: 숨김여부
+     */
     func isReadMoreButtonHidden(_ hidden: Bool){
         readMoreButton.isHidden = hidden
     }
     
+    /**
+     텍스트 라벨이 실제 보이는 라인 수 가져오는 함수
+     - returns: 라인수
+     */
     func getVisibleNumberLines() -> Int {
         return titleLabel.numberOfVisibleLines
     }
     
+    /**
+     더보기 버튼 클릭 이벤트 핸들러 함수
+     - parameters:
+     - handler: handler block
+     */
     func addReadMoreClicked(handler: (ReadMoreButtonHandler)? = nil) {
         readMoreButtonHandler = handler
     }

@@ -16,14 +16,19 @@ enum SearchResultType {
 
 class SearchResultsDataSource: NSObject, UITableViewDataSource {
 
+    /// SearchBar 객체
     weak var searchBar: UISearchBar?
     
+    /// 최근 검색어들 배열 모델 리스트
     var historys: [HistoryEntity] = []
     
+    /// 앱 리스트 정보 배열
     var appListItems: [SearchResultModel]?
     
+    /// 현재 테이블의 표시된 상태 값
     var currentResultType: SearchResultType = .history
     
+    /// 검색어
     var searchWord: String = ""
     
     //

@@ -10,12 +10,16 @@ import UIKit
 
 class SearchDetailDataSource: NSObject, UITableViewDataSource {
 
+    /// App 정보 데이타 모델
     var lookupItem: SearchResultModel?
     
+    /// App 정보 데이타 중 Infomation 부분 데이타 모델 리스트
     var infoModels: [SearchInfoListModel] = []
     
+    /// Expand시 스크롤 관련 하여 체크하는 변수
     var scrollPostionReturnValue: Bool = false
     
+    /// Expand 된 IndexPath 정보 담는 배열
     fileprivate var cellExpandIndexPaths: Set<IndexPath> = []
     
     //
@@ -97,10 +101,20 @@ class SearchDetailDataSource: NSObject, UITableViewDataSource {
 
 extension SearchDetailDataSource {
     
+    /**
+     IndexPath로 부터 Expand 되었는지 체크 하는 함수
+     - parameters:
+     - indexPath: indexPath
+     */
     func isCellAtExpanded(at indexPath: IndexPath) -> Bool {
         return cellExpandIndexPaths.contains(indexPath)
     }
     
+    /**
+     IndexPath로 부터 배열에 저장 하는 함수
+     - parameters:
+     - indexPath: indexPath
+     */
     func addCellAtExpandedIndexPath(_ indexPath: IndexPath) {
         if self.isCellAtExpanded(at: indexPath) == true {
             return
@@ -108,6 +122,11 @@ extension SearchDetailDataSource {
         cellExpandIndexPaths.insert(indexPath)
     }
     
+    /**
+     IndexPath로 부터 배열에 삭제 하는 함수
+     - parameters:
+     - indexPath: indexPath
+     */
     func removeCellAtExpandedIndexPath(_ indexPath: IndexPath) {
         cellExpandIndexPaths.remove(indexPath)
     }

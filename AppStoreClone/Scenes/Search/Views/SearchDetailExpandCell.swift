@@ -45,6 +45,10 @@ class SearchDetailExpandCell: BaseTableViewCell {
     }
     
     // MARK: Public Method
+    
+    /**
+     StackView Expand 하는 함수
+     */
     public func openExpand() {
         model?.useExpand = false
         model?.expandState = .expanded
@@ -63,6 +67,12 @@ class SearchDetailExpandCell: BaseTableViewCell {
     }
 
     // MARK: Private Method
+    
+    /**
+     ArrowImage를 숨김에 따라 처리하는 함수
+     - parameters:
+     - hidden: 숨김여부
+     */
     private func updateArrowImageHidden(_ hidden: Bool) {
         arrowImgView.isHidden = hidden
         arrowRightConstraint.constant = hidden ? 0 : 35

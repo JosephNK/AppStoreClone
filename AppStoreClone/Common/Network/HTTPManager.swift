@@ -43,6 +43,15 @@ class HTTPManager {
         session = URLSession(configuration: sessionConfiguration!, delegate: nil, delegateQueue: nil)
     }
     
+    /**
+     통신 JSON 요청 함수
+     - parameters:
+     - url: URL
+     - httpMethod: HTTP Get, Post Value
+     - parameters: 파라미터
+     - success: 성공 block
+     - failure: 실패 block
+     */
     func requestJSON(_ url: URL?, httpMethod: HTTPMethod, parameters: HTTPParameters,  _ success: @escaping SuccessHandler, _ failure: @escaping FailureHandler) {
         guard let url = url else {
             return
@@ -120,6 +129,13 @@ class HTTPManager {
         task?.resume()
     }
     
+    /**
+     데이타 타입을 체크하여 escape된 형태로 변환해주는 배열 함수
+     - parameters:
+     - fromKey: 키값
+     - value: value값
+     - returns: 키/value 배열
+     */
     public func queryComponents(fromKey key: String, value: Any) -> [(String, String)] {
         var components: [(String, String)] = []
         
@@ -146,6 +162,12 @@ class HTTPManager {
         return components
     }
     
+    /**
+     문자를 URL escape 해주는 함수
+     - parameters:
+     - string: 문자
+     - returns: escape 처리 된 문자
+     */
     public func escape(_ string: String) -> String {
         let generalDelimitersToEncode = ":#[]@"
         let subDelimitersToEncode = "!$&'()*+,;="
@@ -177,6 +199,12 @@ class HTTPManager {
         return escaped
     }
     
+    /**
+     파라미터 인코딩 변환해서 & 값으로 연결 해주는 함수
+     - parameters:
+     - parameters: 파라미터
+     - returns: 문자열
+     */
     private func query(_ parameters: [String: Any]) -> String {
         var components: [(String, String)] = []
         
@@ -187,6 +215,11 @@ class HTTPManager {
         return components.map { "\($0)=\($1)" }.joined(separator: "&")
     }
     
+    /**
+     Status bar에 ActivityIndicator 표시 해주는 함수
+     - parameters:
+     - visible: 표시 여부
+     */
     private func applicationNetworkActivityIndicatorVisible(_ visible: Bool) {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = visible

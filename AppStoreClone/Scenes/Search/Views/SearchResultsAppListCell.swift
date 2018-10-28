@@ -69,10 +69,6 @@ class SearchResultsAppListCell: BaseTableViewCell {
         downloadButton.layer.cornerRadius = 10.0
     }
     
-    func configureCell(withRating rating: Double) {
-        floatRatingView.rating = rating
-    }
-    
 }
 
 extension SearchResultsAppListCell: UICollectionViewDataSource {

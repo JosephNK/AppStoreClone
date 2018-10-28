@@ -10,6 +10,12 @@ import UIKit
 
 extension UIImage {
     
+    /**
+     색상을 이미지로 변환
+     - parameters:
+     - color: 색상
+     - returns: 이미지
+     */
     static func imagePattern(withColor color: UIColor) -> UIImage? {
         let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
         UIGraphicsBeginImageContext(rect.size)
@@ -24,6 +30,13 @@ extension UIImage {
         return image
     }
     
+    /**
+     이미지 리사이즈 함수
+     - parameters:
+     - image: 이미지
+     - targetSize: 원하는 사이즈
+     - returns: 리사이즈 이미지
+     */
     static func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
         
@@ -54,10 +67,21 @@ extension UIImage {
 
 extension UIImageView {
     
+    /**
+     이미지뷰에 URL로 부터 Cache 이미지 설정하는 Extention 함수
+     - parameters:
+     - url: URL
+     */
     func setCacheImageURL(_ url: URL?) {
         self.setCacheImageURL(url, nil)
     }
     
+    /**
+     이미지뷰에 URL로 부터 Cache 이미지 설정하는 Extention 함수
+     - parameters:
+     - url: URL
+     - success: 성공 block
+     */
     func setCacheImageURL(_ url: URL?, _ success: ((_ image: UIImage) -> Void)? = nil) {
         let urlString = url?.absoluteString ?? ""
         if urlString.isEmpty {
@@ -80,6 +104,11 @@ extension UIImageView {
 
 extension UIButton {
     
+    /**
+     버튼에 URL로 부터 Cache 이미지 설정하는 Extention 함수
+     - parameters:
+     - url: URL
+     */
     func setCacheImageURL(_ url: URL?) {
         let urlString = url?.absoluteString ?? ""
         if urlString.isEmpty {

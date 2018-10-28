@@ -34,6 +34,13 @@ class ImageDownLoadManager {
         imageSession = URLSession(configuration: sessionConfiguration!, delegate: nil, delegateQueue: operationQueue!)
     }
     
+    /**
+     통신 캐쉬 이미지 요청 함수
+     - parameters:
+     - url: URL
+     - success: 성공 block
+     - failure: 실패 block
+     */
     func requestImageURL(_ url: URL?, _ success: @escaping SuccessHandler, _ failure: @escaping FailureHandler) {
         guard let url = url else {
             return
@@ -85,11 +92,17 @@ class ImageDownLoadManager {
         task?.resume()
     }
     
+    /**
+     캐쉬 이미지 전체 삭제
+     */
     func clearCacheAll() {
         urlCache.removeAllCachedResponses()
         URLCache.shared.removeAllCachedResponses()
     }
     
+    /**
+     url로 캐쉬 이미지를 삭제
+     */
     func removeCacheUrl(_ url: URL?) {
         guard let url = url else {
             return

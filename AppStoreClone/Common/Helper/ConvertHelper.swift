@@ -10,6 +10,12 @@ import UIKit
 
 extension String {
     
+    /**
+     바이트를 MB 단위 문자로 변환
+     - parameters:
+     - bytes: 바이트
+     - returns: MB 문자 결과
+     */
     static func convertMBFormatter(_ bytes: Int64) -> String {
         let formatter = ByteCountFormatter()
         formatter.allowedUnits = ByteCountFormatter.Units.useMB
@@ -20,6 +26,12 @@ extension String {
         return "\(result)MB"
     }
     
+    /**
+     조회수를 M,K 단위 문자로 변환
+     - parameters:
+     - count: 조회수
+     - returns: M,K 문자 결과
+     */
     static func convertCountUnit(_ count: Int64) -> String {
         if count >= 1000000 {
             let n = count / 1000000
@@ -41,12 +53,25 @@ extension String {
         return "\(count)"
     }
     
-    static func convertCompatibleDisplay(compatibleVersion: String) -> String {
+    /**
+     현재 디바이스 모델의 호환성 표시 함수
+     - parameters:
+     - compatibleMinVersion: 최소 IOS 버전
+     - returns: 문자열로 반환
+     */
+    static func convertCompatibleDisplay(compatibleMinVersion: String) -> String {
         let currentModel = UIDevice.current.model
         return "\(String(format: NSLocalizedString("For %@", comment: ""), "\(currentModel)"))"
     }
     
-    static func convertDeviceInfo(compatibleDevices: [String], compatibleVersion: String) -> String {
+    /**
+     디바이스 목록으로 부터 호환되는 디바이스 표시 함수
+     - parameters:
+     - compatibleDevices: 디바이스 목록
+     - compatibleMinVersion: 최소 IOS 버전
+     - returns: 문자열로 반환
+     */
+    static func convertDeviceInfo(compatibleDevices: [String], compatibleMinVersion: String) -> String {
         //let systemVersion = UIDevice.current.systemVersion
         //DDLogDebug("systemVersion \(systemVersion)")
         
@@ -89,9 +114,15 @@ extension String {
             compatibleDeviceInfo = String(format: NSLocalizedString("Compatible %@", comment: ""), "\(String(describing: device1))")
         }
         
-        return "\(String(format: NSLocalizedString("RequiresiOS %@", comment: ""), "\(compatibleVersion)")) \(compatibleDeviceInfo)"
+        return "\(String(format: NSLocalizedString("RequiresiOS %@", comment: ""), "\(compatibleMinVersion)")) \(compatibleDeviceInfo)"
     }
     
+    /**
+     ISO2A 목록으로 부터 지원되는 언어 문자열로 반환하는 함수
+     - parameters:
+     - keys: ISO2A 목록
+     - returns: title - 타이틀, desc - 지원되는 언어 문자열, langCount - 결과 목록 수
+     */
     static func conventLanguageCodesISO2A(keys: [String]) -> (title: String, desc: String, langCount: Int) {
         var titleResult: String = ""
         var descResults: [String] = []
@@ -118,6 +149,12 @@ extension String {
 
 extension Date {
     
+    /**
+     애플 날짜 형식 문자로 부터 Date 타입으로 변환 함수
+     - parameters:
+     - dateString: 날짜 문자열
+     - returns: 날짜
+     */
     static func convertAppleStringToDate(_ dateString: String?) -> Date? {
         guard let dateString = dateString else {
             return nil
@@ -128,6 +165,13 @@ extension Date {
         return convertStringToDate(dateString, dateFormat: "yyyy-MM-dd'T'HH:mm:ssZ")
     }
     
+    /**
+     애플 날짜 형식 문자로 부터 Date 타입으로 변환 함수
+     - parameters:
+     - dateString: 날짜 문자열
+     - dateFormat: Date Format
+     - returns: 날짜
+     */
     static func convertStringToDate(_ dateString: String, dateFormat: String) -> Date? {
         let dateFormatter = DateFormatter()
         //dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -135,6 +179,12 @@ extension Date {
         return dateFormatter.date(from: dateString)
     }
     
+    /**
+     날짜를 간소화해서 이전 형식으로 표시
+     - parameters:
+     - date: 날짜
+     - returns: X 년 전 등등으로 반환
+     */
     static func timeAgoSince(_ date: Date?) -> String {
         guard let date = date else {
             return ""

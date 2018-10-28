@@ -23,6 +23,12 @@ class ClosureSleeve {
 }
 
 extension UIControl {
+    /**
+     UIControl addAction block 설정 함수
+     - parameters:
+     - controlEvents: UIControl.Event
+     - closure: block
+     */
     func addAction(for controlEvents: UIControl.Event, _ closure: @escaping ()->()) {
         let sleeve = ClosureSleeve(closure)
         addTarget(sleeve, action: #selector(ClosureSleeve.invoke), for: controlEvents)

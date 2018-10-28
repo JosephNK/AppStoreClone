@@ -10,12 +10,25 @@ import UIKit
 
 extension UIViewController {
     
+    /**
+     스토리보드로 부터 컨트롤러 가져오는 함수
+     - parameters:
+     - name: 스토리보드 이름
+     - identifier: 식별자
+     */
     func getControllerFromStoryboard(withStoryboardName name: String, withIdentifier identifier: String) -> UIViewController {
         let storyboard = UIStoryboard(name: name, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: identifier)
         return controller
     }
     
+    /**
+     스토리보드로 부터 가져온 컨트롤러를 네비게이션에 Push 하는 함수
+     - parameters:
+     - name: 스토리보드 이름
+     - identifier: 식별자
+     - beforePush: 푸쉬 이전에 처리 할 수 있는 클로저 함수
+     */
     func pushViewControllerByStoryboard(withStoryboardName name: String, withIdentifier identifier: String, beforePush: ((_ controller: UIViewController) -> Void)? = nil) {
         let storyboard = UIStoryboard(name: name, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: identifier)
@@ -29,6 +42,11 @@ extension UIViewController {
 
 extension UIViewController {
     
+    /**
+     SearchController에 하단 라인 없애기
+     - parameters:
+     - searchController: SearchController
+     */
     func removeBottomLineFormSearchController(_ searchController: UISearchController) {
         let lineView = UIView(frame: CGRect(x: 0, y: searchController.searchBar.frame.height-4, width: self.view.bounds.width, height: 1))
         lineView.backgroundColor = .white
@@ -39,6 +57,11 @@ extension UIViewController {
 
 extension UIViewController {
     
+    /**
+     네비게이션바에 검색바 셋팅 하는 함수
+     - parameters:
+     - searchController: SearchController
+     */
     func applyLargeTitleWithSearchNavigationBar(_ searchController: UISearchController) {
         // Large Title Setup
         self.definesPresentationContext = true
@@ -54,6 +77,12 @@ extension UIViewController {
 
 extension UIViewController {
     
+    /**
+     이미지를 네이게이션바 타이블뷰에 셋팅
+     - parameters:
+     - image: 이미지
+     - returns: 이미지뷰
+     */
     func getCustomTitleImageView(withImage image: UIImage?) -> UIImageView? {
         let titleImgView = UIImageView.init(frame: CGRect(x: 0.0, y: 0.0, width: 30.0, height: 30.0))
         titleImgView.backgroundColor = UIColor.clear
@@ -63,6 +92,13 @@ extension UIViewController {
         return titleImgView
     }
     
+    /**
+     네이게이션바 커스텀 버튼 만들어 주는 함수
+     - parameters:
+     - title: 타이틀명
+     - backgroundColor: 배경색상
+     - returns: Tuple barItem - UIBarButtonItem, button - UIButton
+     */
     func getCustomBarButton(title: String, backgroundColor: UIColor) -> (barItem: UIBarButtonItem, button: UIButton) {
         let button = UIButton(type: .custom)
         button.setTitle(title, for: UIControl.State.normal)

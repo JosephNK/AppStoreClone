@@ -23,6 +23,11 @@ class HistoryCoreData {
     
     init(){}
     
+    /**
+     날짜를 기준으로 최신순으로 검색어를 가져오는 함수
+     - parameters:
+     - success: 성공 block
+     */
     func fetch(_ success: SuccessHandler) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -45,6 +50,12 @@ class HistoryCoreData {
         }
     }
     
+    /**
+     검색어를 앞에 부터 일치 되는 검색어만 가져오는 함수
+     - parameters:
+     - search: 검색어
+     - success: 성공 block
+     */
     func fetch(search: String, _ success: SuccessHandler) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -65,6 +76,13 @@ class HistoryCoreData {
         }
     }
 
+    /**
+     검색어를 저장하는 함수
+     - parameters:
+     - content: 검색어
+     - date: 날짜
+     - returns: 성공여부
+     */
     @discardableResult
     func save(withContent content: String, withDate date: Date) -> Bool {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -92,6 +110,13 @@ class HistoryCoreData {
         return isSuccess
     }
     
+    /**
+     존재하는 검색어를 업데이트 함수
+     - parameters:
+     - content: 검색어
+     - date: 날짜
+     - returns: 성공여부
+     */
     @discardableResult
     func update(withContent content: String, withDate date: Date) -> Bool {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -125,6 +150,13 @@ class HistoryCoreData {
         return isSuccess
     }
     
+    /**
+     존재하는 검색어가 있으면 업데이트, 아니면 저장하는 함수
+     - parameters:
+     - content: 검색어
+     - date: 날짜
+     - returns: 성공여부
+     */
     @discardableResult
     func updateWithSave(withContent content: String, withDate date: Date) -> Bool {
         let isUpdated = self.update(withContent: content, withDate: date)
@@ -134,6 +166,9 @@ class HistoryCoreData {
         return isUpdated
     }
     
+    /**
+     검색어를 전체 삭제 하는 함수
+     */
     func deleteAll() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return

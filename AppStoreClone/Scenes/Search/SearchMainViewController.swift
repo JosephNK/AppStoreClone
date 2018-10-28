@@ -81,6 +81,9 @@ extension SearchMainViewController {
 // MARK: - Private Method
 extension SearchMainViewController {
     
+    /**
+     검색어 히스토리 가져오기
+     */
     fileprivate func fetchHistoryCoreData() {
         // Search History Fetch
         HistoryCoreData.shared.fetch { [weak self] (results) in
@@ -92,9 +95,15 @@ extension SearchMainViewController {
         }
     }
     
+    /**
+     SearchBar 활성화 & 텍스트 자동 표시
+     - parameters:
+     - content: 텍스트 (검색어)
+     */
     fileprivate func activeSearchBarByContent(_ content: String) {
         self.searchController.searchBar.text = content
         self.searchController.isActive = true
+        
     }
     
 }
@@ -158,6 +167,9 @@ extension SearchMainViewController: UISearchBarDelegate {
 // MARK: - RxSwift Bind
 extension SearchMainViewController {
     
+    /**
+     RxSwift Bind SearchController
+     */
     func bindRxBySearchController() {
         /*
         searchController.rx
@@ -195,6 +207,9 @@ extension SearchMainViewController {
             }.disposed(by: disposeBag)
     }
     
+    /**
+     RxSwift Bind SearchBar
+     */
     func bindRxBySearchBar() {
         /*
         searchController.searchBar.rx.text.orEmpty

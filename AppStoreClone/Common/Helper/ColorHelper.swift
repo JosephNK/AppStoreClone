@@ -9,15 +9,33 @@
 import UIKit
 
 extension UIColor {
+    
+    /**
+     헥사코드로 색상 설정
+     - parameters:
+     - hexString: 헥사코드 스트링
+     */
     public convenience init(_ hexString: String) {
         self.init(hexString: hexString, alpha: 1.0)
     }
     
+    /**
+     헥사코드로 색상 설정
+     - parameters:
+     - hexInt: 헥사코드 인트
+     - alpha: 알파값
+     */
     public convenience init(hexInt: Int, alpha: Float = 1.0) {
         let hexString = String(format: "%06X", hexInt)
         self.init(hexString: hexString, alpha: alpha)
     }
     
+    /**
+     헥사코드로 색상 설정
+     - parameters:
+     - hexString: 헥사코드 스트링
+     - alpha: 알파값
+     */
     public convenience init(hexString: String, alpha: Float = 1.0) {
         var red: CGFloat = 0
         var green: CGFloat = 0
@@ -62,6 +80,9 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: mAlpha)
     }
     
+    /**
+     랜덤색상 설정
+     */
     public static func randomColor() -> UIColor {
         let hue : CGFloat = CGFloat(arc4random() % 256) / 256
         let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5
@@ -73,6 +94,10 @@ extension UIColor {
 
 extension UIColor {
     
+    /**
+     색상을 이미지로 변환 (1pt)
+     - returns: 이미지
+     */
     func as1ptImage() -> UIImage {
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         setFill()

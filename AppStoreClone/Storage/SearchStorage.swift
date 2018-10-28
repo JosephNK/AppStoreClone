@@ -10,6 +10,13 @@ import UIKit
 
 class SearchStorage {
 
+    /**
+     Search API 검색어로 부터 조회 함수
+     - parameters:
+     - searchText: 검색어
+     - success: 성공 block
+     - failure: 실패 block
+     */
     static func requestSearchList(searchText: String, _ success: @escaping (_ datas: [SearchResultModel]) -> Void, _ failure: @escaping (_ error: Error) -> Void) {
         var parameters: HTTPParameters = [
             "country" : "kr",
@@ -39,6 +46,13 @@ class SearchStorage {
         }
     }
     
+    /**
+     Search API bundleId로 부터 조회 함수
+     - parameters:
+     - bundleId: bundleId
+     - success: 성공 block
+     - failure: 실패 block
+     */
     static func requestSearchLookup(bundleId: String, _ success: @escaping (_ datas: [SearchResultModel]) -> Void, _ failure: @escaping (_ error: Error) -> Void) {
         var parameters: HTTPParameters = [
             "country" : "kr",
