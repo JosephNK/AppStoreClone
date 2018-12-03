@@ -19,9 +19,13 @@ extension String {
     static func checkRegularOnlyKorean(_ text: String) -> Bool {
         // Check Only Korean Regular
         let pattern = "^[ㄱ-ㅎㅏ-ㅣ가-힣]"
-        let regex = try! NSRegularExpression(pattern:pattern, options:[])
-        let list = regex.matches(in: text, options: [], range: NSRange.init(location: 0, length:text.count))
-        if list.count <= 0 {
+        do {
+            let regex = try NSRegularExpression(pattern:pattern, options:[])
+            let list = regex.matches(in: text, options: [], range: NSRange.init(location: 0, length:text.count))
+            if list.count <= 0 {
+                return false
+            }
+        } catch {
             return false
         }
         
